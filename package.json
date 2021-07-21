@@ -1,0 +1,71 @@
+{
+  "name": "odata-pretty-print",
+  "version": "1.1.0",
+  "description": "Pretty Prints a ODATA Request URL",
+  "main": "dist/index.js",
+  "author": "Jannis Rosenbaum",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "test": "env TS_NODE_PROJECT='tests/tsconfig.json' mocha -r ts-node/register tests/**/*.test.ts",
+    "coverage": "nyc yarn test",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx src --color",
+    "lint:all": "yarn lint:strict && yarn lint:ts && yarn lint:depcheck ",
+    "lint:ts": "tsc --noEmit",
+    "lint:ts-watch": "tsc -w --noEmit",
+    "lint:watch": "esw -w --changed --ext .js,.jsx,.ts,.tsx src --color",
+    "lint:depcheck": "depcheck --config=./.depcheckrc .",
+    "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx src --color --fix && yarn format --loglevel silent",
+    "lint:strict": "eslint --ext .js,.jsx,.ts,.tsx src --color --max-warnings=0",
+    "format": "prettier --no-editorconfig --ignore-unknown --write '**/(*.js|*.ts|*.jsx|*.tsx|*.md)'",
+    "format:check": "prettier -c --no-editorconfig --ignore-unknown --write '**/(*.js|*.ts|*.jsx|*.tsx|*.md)'",
+    "format:precommit": "pretty-quick --staged --ignore-path .editorconfig",
+    "build": "tsc",
+    "prepare": "yarn build",
+    "semantic-release": "semantic-release"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@sap-cloud-sdk/core": "=1.46.0",
+    "@sap-cloud-sdk/util": "=1.46.0",
+    "@types/node": "^15.12.4",
+    "@types/object-path": "^0.11.0",
+    "normalizr": "^3.6.1"
+  },
+  "module": "index.ts",
+  "devDependencies": {
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/git": "^9.0.0",
+    "@semantic-release/gitlab": "^6.2.1",
+    "@semantic-release/npm": "^7.1.3",
+    "@types/chai": "^4.2.17",
+    "@types/mocha": "^8.2.2",
+    "@types/moxios": "^0.4.11",
+    "@typescript-eslint/eslint-plugin": "^4.5.0",
+    "@typescript-eslint/parser": "^4.5.0",
+    "chai": "^4.3.4",
+    "depcheck": "^1.4.0",
+    "eslint": "^7.25.0",
+    "eslint-config-airbnb": "18.2.1",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-import-resolver-typescript": "^2.3.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-unused-imports": "^1.1.0",
+    "eslint-watch": "^7.0.0",
+    "mocha": "^8.3.2",
+    "mocha-sinon": "^2.1.2",
+    "nyc": "^15.1.0",
+    "prettier": "^2.2.1",
+    "semantic-release": "^17.4.4",
+    "sinon": "^11.1.1",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.4"
+  },
+  "files": [
+    "dist/**/*"
+  ]
+}

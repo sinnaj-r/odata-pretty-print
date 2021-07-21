@@ -1,0 +1,10 @@
+build/*
+public/*
+types/*
+config/*
+scripts/*
+src/serviceWorker.ts
+cypress/*
+dist/*
+coverage/*
+instrumented/*

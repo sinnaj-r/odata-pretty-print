@@ -1,0 +1,26 @@
+{
+  "parser-plugins": [
+    "typescript",
+    "asyncGenerators",
+    "bigInt",
+    "classProperties",
+    "classPrivateProperties",
+    "dynamicImport",
+    "importMeta",
+    "objectRestSpread",
+    "optionalCatchBinding"
+  ],
+  "extensions": [
+    ".js",
+    ".ts"
+  ],
+  "all": true,
+  "reporter": [
+    "cobertura",
+    "text-summary",
+    "lcov"
+  ],
+  "cache": false,
+  "all": true,
+  "include": ["src/**"]
+}

@@ -1,0 +1,2 @@
+ignores: ["ts-node","@types/*","postinstall-postinstall", "prettier-eslint", "typescript", "start-server-and-test", "cypress", "stylelint*", "@istanbuljs/schema", "@semantic-release/*"]
+specials: ["babel","bin","eslint","husky","istanbul","lint-staged","prettier", "tslint","webpack"]

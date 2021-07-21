@@ -1,0 +1,64 @@
+# cache using branch name
+# https://gitlab.com/help/ci/caching/index.md
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - .yarn
+
+stages:
+  - test
+  - release
+
+variables:
+  NPM_TOKEN: ${CI_JOB_TOKEN}
+
+before_script:
+  - echo -e "machine gitlab.hpi.de\nlogin gitlab-ci-token\npassword ${CI_JOB_TOKEN}" > ~/.netrc
+  - git clone https://gitlab.hpi.de/epicbp2020/jannis-ba-code/cloud-sdk-js.git ./cloud-sdk-js
+  - cd cloud-sdk-js/packages/core && git checkout bachelor-thesis && yarn install --cache-folder ../../../.yarn --network-timeout 100000 --prefer-offline && yarn link && cd ../../../ && yarn link "@sap-cloud-sdk/core"
+  - yarn install --cache-folder .yarn --network-timeout 100000 --prefer-offline
+  - |
+    {
+      echo "@${CI_PROJECT_ROOT_NAMESPACE}:registry=${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/npm/"
+      echo "${CI_API_V4_URL#https?}/projects/${CI_PROJECT_ID}/packages/npm/:_authToken=\${CI_JOB_TOKEN}"
+    } | tee --append .npmrc
+
+checkFormat:
+  dependencies: []
+  needs: []
+  stage: test
+  image: node:14
+  before_script:
+    - yarn global add --network-timeout 100000 --cache-folder .yarn prettier
+  script:
+    - yarn format:check
+  only:
+    - merge_requests
+    - master
+
+test-lint:
+  stage: test
+  image: node:14
+  dependencies: []
+  needs: []
+  script:
+    - yarn lint:all
+    - yarn run coverage
+  only:
+    - merge_requests
+    - master
+  artifacts:
+    when: always
+    paths:
+      - coverage
+    reports:
+      cobertura: coverage/cobertura-coverage.xml
+    expire_in: 10 days
+
+publish:
+  stage: release
+  image: node:14
+  script:
+    - yarn run semantic-release
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH

@@ -1,0 +1,144 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "mocha": true
+  },
+  "extends": [
+    "airbnb",
+    "prettier",
+    "prettier/@typescript-eslint",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint", "unused-imports"],
+  "settings": {
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true
+      },
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
+  "overrides": [
+    {
+      "files": ["*.test.ts"],
+      "rules": {
+        "no-unused-expressions": "off"
+      }
+    }
+  ],
+  "rules": {
+    "dot-notation": "warn",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "unused-imports/no-unused-imports": "warn",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "no-use-before-define": "off",
+    "import/prefer-default-export": ["off"],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "react/prop-types": "off",
+    "no-restricted-syntax": "off",
+    "no-continue": "off",
+    "prefer-template": ["warn"],
+    "prefer-const": "warn",
+    "implicit-arrow-linebreak": "off",
+    "linebreak-style": ["warn", "unix"],
+    // We might need to include some of the following rules
+    //
+    // "object-curly-spacing": ["warn", "always"],
+    "react/function-component-definition": [
+      "warn",
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ],
+    "max-len": [
+      "warn",
+      {
+        "code": 80,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true,
+        "ignoreComments": true
+      }
+    ],
+    "max-lines": [
+      "warn",
+      { "max": 100, "skipBlankLines": true, "skipComments": true }
+    ],
+    "camelcase": [
+      "warn",
+      {
+        "ignoreImports": true
+      }
+    ]
+    // "@typescript-eslint/no-explicit-any": [
+    //   "error",
+    //   {
+    //     "ignoreRestArgs": true
+    //   }
+    // ],
+
+    // "no-plusplus": [
+    //   "error",
+    //   {
+    //     "allowForLoopAfterthoughts": true
+    //   }
+    // ],
+    // "react/jsx-key": "error",
+    // "import/no-extraneous-dependencies": [
+    //   "error",
+    //   {
+    //     "devDependencies": [
+    //       "**/*.test.js",
+    //       "**/*.test.jsx",
+    //       "**/*.test.ts",
+    //       "**/*.test.tsx",
+    //       "src/tests/**/*"
+    //     ]
+    //   }
+    // ],
+    // "react/jsx-props-no-spreading": "off",
+    // "react/jsx-boolean-value": "off",
+    // "react/prop-types": "off",
+    // "react/no-unescaped-entities": "off",
+    // "react/jsx-one-expression-per-line": "off",
+    // "react/destructuring-assignment": "off",
+    // "@typescript-eslint/comma-dangle": ["error", {
+    //   "arrays": "only-multiline",
+    //   "objects": "only-multiline",
+    //   "imports": "only-multiline",
+    //   "exports": "only-multiline",
+    //   "functions": "never"
+    // }]
+  }
+}
