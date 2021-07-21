@@ -68,5 +68,6 @@ export const format = (t: string, maxWidth = 40) => {
 };
 
 export const print = (request: string, maxWidth = 40) => {
+  // eslint-disable-next-line no-console
   console.log(format(request, maxWidth));
 };

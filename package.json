@@ -1,6 +1,6 @@
 {
   "name": "odata-pretty-print",
-  "version": "1.1.0",
+  "version": "0.0.1",
   "description": "Pretty Prints a ODATA Request URL",
   "main": "dist/index.js",
   "author": "Jannis Rosenbaum",
@@ -28,11 +28,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@sap-cloud-sdk/core": "=1.46.0",
-    "@sap-cloud-sdk/util": "=1.46.0",
     "@types/node": "^15.12.4",
-    "@types/object-path": "^0.11.0",
-    "normalizr": "^3.6.1"
+    "@types/object-path": "^0.11.0"
   },
   "module": "index.ts",
   "devDependencies": {
