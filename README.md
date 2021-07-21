@@ -1,4 +1,6 @@
 # OData Pretty Print
+[![codecov](https://codecov.io/gh/sinnaj-r/odata-pretty-print/branch/main/graph/badge.svg?token=HzL4zyPvzL)](https://codecov.io/gh/sinnaj-r/odata-pretty-print)
+
 
 Pretty print OData Request-URLs.
 
